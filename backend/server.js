@@ -9,6 +9,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
+import path from 'path'
 import { loadArtists, loadAlbums, loadAlbum, loadArtist } from './utils/loadDB.js';
 
 connectDB()
@@ -26,9 +27,20 @@ app.use('/api/users', userRoutes)
 app.use('/api/spotify', spotifyRoutes)
 app.use('/api/profile', profileRoutes)
 
-app.get('/', (req, res) => {
-    res.send('Server is ready')
-})
+// ✅ Serve static files from React's build folder
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, '../frontend/dist', "index.html"));
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send('Server is ready')
+    })
+}
 
 app.use(notFound)
 app.use(errorHandler)
