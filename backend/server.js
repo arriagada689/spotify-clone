@@ -10,6 +10,7 @@ import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import { loadArtists, loadAlbums, loadAlbum, loadArtist } from './utils/loadDB.js';
 
 connectDB()
