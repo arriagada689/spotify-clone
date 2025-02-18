@@ -19,7 +19,7 @@ const SideBar = () => {
     const [type, setType] = useState('All')
     const [selected, setSelected] = useState('Home')
     const [likedSongs, setLikedSongs] = useState(null)
-    const { sidebarUpdate } = useContext(AuthContext);
+    const { sidebarUpdate, logoutUser } = useContext(AuthContext);
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
 
     useEffect(() => {
@@ -37,16 +37,25 @@ const SideBar = () => {
         if(localStorage.getItem('userInfo')){
             const token = JSON.parse(localStorage.getItem('userInfo')).token
             const getSidebarData = async () => {
-                const response = await fetch(`${apiBaseUrl}/profile/sidebar_data?type=${type}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
+                try {
+                    const response = await fetch(`${apiBaseUrl}/profile/sidebar_data?type=${type}`, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    if(response.ok) {
+                        const data = await response.json()
+                        // console.log(data)
+                        setArr(data)
+                    } else {
+                        const error = await response.json()
+                        throw new Error(error.message)
                     }
-                })
-                if(response.ok) {
-                    const data = await response.json()
-                    // console.log(data)
-                    setArr(data)
+                } catch (error) {
+                    if(error.message === 'Token expired'){
+                        logoutUser()
+                    }
                 }
             }
             getSidebarData()

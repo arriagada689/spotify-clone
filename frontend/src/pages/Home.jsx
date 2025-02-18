@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import ArtistCard from '../components/ArtistCard'
 import AlbumCard from '../components/AlbumCard'
 import PlaylistCard from '../components/PlaylistCard'
@@ -6,6 +6,7 @@ import MiniCard from '../components/MiniCard'
 import { Link } from 'react-router-dom'
 import { Oval } from 'react-loader-spinner'
 import sortAlbumsByReleaseDate from '../utils/sortAlbums'
+import { AuthContext } from '../contexts/AuthContext.jsx';
 
 const Home = () => {
     const [popularArtists, setPopularArtists] = useState(null)  
@@ -13,6 +14,8 @@ const Home = () => {
     const [featuredPlaylists, setFeaturedPlaylists] = useState(null)
     const [newReleases, setNewReleases] = useState(null)
     const [miniBoxData, setMiniBoxData] = useState(null)
+
+    const { logoutUser } = useContext(AuthContext)
 
     useEffect(() => {
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
@@ -46,16 +49,26 @@ const Home = () => {
       if(localStorage.getItem('userInfo')){
         const token = JSON.parse(localStorage.getItem('userInfo')).token
         const getData = async () => {
-          const response = await fetch(`${apiBaseUrl}/profile/get_sub_profile_data`, {
+          try {
+            const response = await fetch(`${apiBaseUrl}/profile/get_sub_profile_data`, {
               headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`
               }
-          })
-          if(response.ok) {
-              const data = await response.json()
-              // console.log(data)
-              setMiniBoxData(data)
+            })
+            if(response.ok) {
+                const data = await response.json()
+                // console.log(data)
+                setMiniBoxData(data)
+            } else {
+              const error = await response.json()
+              throw new Error(error.message)
+            }
+          } catch (error) {
+            console.error(error.message)
+            if(response.status === 401 && error.message === 'Token expired'){
+              logoutUser()
+            }
           }
         }
         getData()

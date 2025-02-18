@@ -4,20 +4,24 @@ import Album from "../models/albumModel.js";
 
 const popular_artists_arr = [
     ['Kendrick Lamar', '2YZyLoL8N0Wb9xBt1NhZWg'],
-    ['Post Malone', '246dkjvS1zLTtiykXe5h60'],
-    ['Drake', '3TVXtAsR1Inumwj472S9r4'],  
-    ['Taylor Swift', '06HL4z0CvFAxyc27GXpf02'],
-    ['Billie Eilish', '6qqNVTkY8uBg9cP3Jd7DAH'], 
     ['The Weekend', '1Xyo4u8uXC1ZmMpatF05PJ'], 
-    ['Eminem', '7dGJo4pcD2V6oG8kP0tJRR'],  
-    ['Kanye West', '5K4W6rqBFWDnAN6FQUkS6x'],
-    ['Rihanna', '5pKCCKE2ajJHZ9KAiaK11H'], 
-    ['Sabrina Carpenter', '74KM79TiuVKeVCqs8QtB0B'], 
-    ['Future', '1RyvyyTE3xzB2ZywiAwp0i'], 
-    ['Zach Bryan', '40ZNYROS4zLfyyBSs2PGe2'],
+    ['Lady Gaga', '1HY2Jd0NmPuamShAr6KMms'],
+    ['Drake', '3TVXtAsR1Inumwj472S9r4'],  
+    ['Billie Eilish', '6qqNVTkY8uBg9cP3Jd7DAH'], 
     ['SZA', '7tYKF4w9nC0nq9CsPZTHyP'], 
+    ['Post Malone', '246dkjvS1zLTtiykXe5h60'],
+    ['Rihanna', '5pKCCKE2ajJHZ9KAiaK11H'], 
+    ['Kanye West', '5K4W6rqBFWDnAN6FQUkS6x'],
+    ['Tyler, The Creator', '4V8LLVI7PbaPR0K2TGSxFF'],
+    ['Taylor Swift', '06HL4z0CvFAxyc27GXpf02'],
+    ['Future', '1RyvyyTE3xzB2ZywiAwp0i'], 
     ['Morgan Wallen', '4oUHIQIBe0LHzYfvXNW4QM'],
+    ['Sabrina Carpenter', '74KM79TiuVKeVCqs8QtB0B'], 
+    ['Bruno Mars', '0du5cEVh5yTK9QJze8zA0C'],
+    ['Eminem', '7dGJo4pcD2V6oG8kP0tJRR'],  
+    ['Zach Bryan', '40ZNYROS4zLfyyBSs2PGe2'],
     ['Tommy Richman', '1WaFQSHVGZQJTbf0BdxdNo'],
+    ['Chappell Roan', '7GlBOeep6PqTfFi59PTUUN'],
     ['Hozier', '2FXC3k01G6Gw61bmprjgqS'], 
     ['Luke Combs', '718COspgdWOnwOFpJHRZHS'], 
     ['Travis Scott', '0Y5tJX1MQlPlqiwlOH1tJY'],
@@ -26,25 +30,24 @@ const popular_artists_arr = [
 ];
 
 const popular_albums_arr = [
-    ['THE TORTURED POETS' ,'5H7ixXZfsNMGbIE5OBSpcb'], 
+    ['DeBÍ TiRAR MáS FOToS', '5K79FLRUCSysQnVESLcTdb'],
+    ['GNX', '0hvT3yIEysuuvkK73vgdcW'],
+    ['SOS Deluxe: LANA', '3VQkNrG74QPY4rHBPoyZYZ'],
+    ['CHROMAKOPIA', '0U28P0QVB1QRxpqp5IHOlH'],
+    ['Hurry Up Tomorrow', '3OxfaVgvTxUTy7276t7SPU'],
     ['HIT ME HARD AND SOFT', '7aJuG4TFXa2hmE4z1yxc3n'],
-    ['One Thing At a Time' ,'6i7mF7whyRJuLJ4ogbH2wh'],
-    ['The Rise and Fall of a Midwest Princess' ,'0EiI8ylL0FmWWpgHVTsZjZ'], 
-    ['WE DONT TRUST YOU' ,'4iqbFIdGOTzXeDtt9owjQn'], 
-    ['Zach Bryan' ,'6PbnGueEO6LGodPfvNldYf'],
-    ['MILLION DOLLAR BABY' ,'52TwRwdTUMtkpglbOE5IRz'],
-    ['Not Like Us', '5JjnoGJyOxfSZUZtk2rRwZ'],
-    ['SOS' ,'07w0rG5TETcyihsEIZR3qG'],
-    ['UTOPIA' ,'18NOKLkZETa4sWwLMIm0UZ'], 
+    ["Short n'Sweet", '3iPSVi54hsacKKl1xIR2eH'],
     ['10 Hours of Continuous Rain Sounds for Sleeping' ,'54vGSK50oe08qxz2xXECEC'], 
-    ['I Had Some Help', '1woYXxyyxTQJ0E0AhZE6mj'],
-    ['Eternal Sunshine' ,'5EYKrEDnKhhcNxGedaRQeK'], 
-    ['COWBOY CARTER' ,'6BzxX6zkDsYKFJ04ziU5xQ'], 
-    ['Fireworks & Rollerblades' ,'168CdR21lfn0TTyw1Pkdcm'],
+    ['The Rise and Fall of a Midwest Princess' ,'0EiI8ylL0FmWWpgHVTsZjZ'], 
+    ['One Thing At a Time' ,'6i7mF7whyRJuLJ4ogbH2wh'],
+    ['$ome $exy $ongs 4 U', '6Rl6YoCarF2GHPSQmmFjuR'],
+    ['Alligator Bites Never Heal', '60UzB8mOCMpc7xkuJE6Bwc'],
     ['Blonde' ,'3mH6qwIy9crq0I9YQbOuDf'],
-    ['One of Wun', '7g0PJ7VbsOkYTECUFkyNPN'],
-    ['Stick Season' ,'50ZenUP4O2Q5eCy2NRNvuz'], 
-    ['Un Verano Sin Ti' ,'3RQQmkQEvNCY4prGKE6oc5'],
+    ['THE TORTURED POETS' ,'5H7ixXZfsNMGbIE5OBSpcb'], 
+    ['Best White Noise For Sleeping Baby', '0NGHR9zjS5eFFlqtClA9VV'],
+    ['channel ORANGE', '392p3shh2jkxUxY2VHvlH8'],
+    ['INCÓMODO', '27GWSFRITD8JJcSGMgEfTN'],
+    ['Wicked: The Soundtrack', '3JUrJP460nFIqwjxM19slT'],
 ]
 
 const loadArtists = async () => {
@@ -73,8 +76,19 @@ const loadArtists = async () => {
                     id: artist_id,
                     image: artist_image
                 })
-            } 
-            
+                console.log(`${new_artist.name} was made`)
+            } else { 
+                //update artist data incase of changes
+                const updated_artist = await Artist.findOneAndUpdate(
+                    { id: artist_id },
+                    {
+                        name: artist_name,
+                        image: artist_image
+                    },
+                    { new: true } // Returns the updated document
+                );
+                console.log(`${updated_artist.name} was updated`);
+            }
         } 
     } else {
         const errorData = await response.json();  
@@ -136,6 +150,19 @@ const loadAlbum = async (id) => {
                 artist: album_artist,
                 album_type: album_type
             })
+            console.log(`${new_album.name} was made`)
+        } else {
+            //update data incase any information changed
+            const updated_album = await Album.findOneAndUpdate(
+                { id: album_id },
+                {
+                    name: album_name,
+                    image: album_image,
+                    artist: album_artist,
+                    album_type: album_type
+                }
+            )
+            console.log(`${updated_album.name} was updated`)
         }
     } else {
         const errorData = await response.json();  
@@ -172,6 +199,19 @@ const loadAlbums = async () => {
                     image: album_image,
                     album_type: album_type
                 })
+                console.log(`${new_album.name} was made`)
+            } else {
+                //update data incase any information changed
+                const updated_album = await Album.findOneAndUpdate(
+                    { id: album_id },
+                    {
+                        name: album_name,
+                        image: album_image,
+                        artist: album_artist,
+                        album_type: album_type
+                    }
+                )
+                console.log(`${updated_album.name} was updated`)
             }
         }
     } else {
