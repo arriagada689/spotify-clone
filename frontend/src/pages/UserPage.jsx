@@ -42,7 +42,7 @@ const UserPage = () => {
                     {user.images.length > 0 ? <img src={user.images[1].url} alt={user.name} className='h-[270px] w-[270px] rounded-full mx-auto md:mx-0'/> : <img src={spotifyImage} alt='default image' className='h-[270px] w-[270px] rounded-full mx-auto md:mx-0'/>}
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>Profile</div>
-                        <div className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{user.display_name}</div>
+                        <div className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{user.display_name}</div>
                     </div>
                 </div>
             }

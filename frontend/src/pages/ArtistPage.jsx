@@ -243,7 +243,7 @@ const ArtistPage = () => {
                     {artist.images.length > 0 ? <img src={artist.images[0].url} alt={artist.name} className='h-[270px] w-[270px] rounded-md mx-auto md:mx-0'/> : <img src={spotifyImage} alt='default image' className='h-[270px] w-[270px] rounded-md mx-auto md:mx-0'/>}
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>Artist</div>
-                        <div className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{artist.name}</div>
+                        <div className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{artist.name}</div>
                         <a href={artist.external_urls.spotify} target="_blank"><span className='text-spotifyGreen underline md:hover:underline'>Spotify Link</span></a>
 
                         <div className='text-grayText text-wrap'>Genres: {artist.genres.join(', ')}</div>

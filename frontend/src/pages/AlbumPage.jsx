@@ -153,7 +153,7 @@ const AlbumPage = () => {
                     <img src={album.images[0].url} alt={album.name} className='h-[270px] w-[270px] rounded-md mx-auto md:mx-0'/>
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>{albumType}</div>
-                        <div className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{album.name}</div>
+                        <div className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{album.name}</div>
                         <div className="flex space-x-3 ">
                             <Link to={`/artist/${album.artists[0].id}`} className='underline md:no-underline md:hover:underline'>{album.artists[0].name}</Link>
                             <div className=''>{album.release_date.substring(0, 4)}</div>

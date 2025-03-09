@@ -26,7 +26,6 @@ const AudiobookPage = () => {
             })
             if(response.ok) {
                 const data = await response.json()
-                // console.log(data)
                 setAudiobook(data.audiobook_data)
                 setDuration(data.duration)
             }
@@ -210,7 +209,7 @@ const AudiobookPage = () => {
                     <img src={audiobook.images[0].url} alt={audiobook.name} className='h-[270px] w-[270px] rounded-md mx-auto md:mx-0'/>
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>Audiobook</div>
-                        <div className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{audiobook.name}</div>
+                        <div className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{audiobook.name}</div>
                         <div className='text-grayText'>{audiobook.authors[0].name}</div>
                     </div>
                 </div>

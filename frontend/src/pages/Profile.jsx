@@ -131,7 +131,7 @@ const Profile = () => {
                 }
                 <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                     <div>Profile</div>
-                    <Link to={'/update_profile'} className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4 hover:cursor-pointer'>{profileData.username}</Link>
+                    <Link to={'/update_profile'} className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4 hover:cursor-pointer'>{profileData.username}</Link>
                     <div className='text-grayText'>{ `${profileData.artist_count} artist(s), ${profileData.album_count} album(s), ${profileData.playlist_count} playlist(s), ${profileData.audiobook_count} audiobook(s)` }</div>
                 </div>
             </div>

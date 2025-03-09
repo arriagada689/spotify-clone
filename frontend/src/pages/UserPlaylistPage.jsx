@@ -57,7 +57,6 @@ const UserPlaylistPage = () => {
             })
             if(response.ok) {
                 const data = await response.json()
-                // console.log(data)
                 setTrackCount(data.track_count)
                 setAudiobookCount(data.audiobook_count)
                 setUserPlaylist(data.user_playlist)
@@ -187,7 +186,6 @@ const UserPlaylistPage = () => {
                     setLoading(false)
                     setResults(true)
                     setTotal(data.total)
-                    // console.log(data)
                     setTrackData(data.tracks);
                     setAudiobookData(data.audiobooks);
                 } else {
@@ -332,7 +330,7 @@ const UserPlaylistPage = () => {
                     }
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>Playlist</div>
-                        <Link to={`/update_playlist/${id}`} className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4 hover:cursor-pointer'>{userPlaylist.name}</Link>
+                        <Link to={`/update_playlist/${id}`} className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4 hover:cursor-pointer'>{userPlaylist.name}</Link>
                         {userPlaylist.description.length > 0 && <div className='text-wrap text-sm'>{userPlaylist.description}</div>}
                         <div className='flex space-x-3'>
                             <Link to={`/profile`} className='underline md:no-underline md:hover:underline'>{userPlaylist.creator}</Link>

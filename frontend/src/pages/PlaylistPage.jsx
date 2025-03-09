@@ -29,7 +29,6 @@ const PlaylistPage = () => {
                 })
                 if(response.ok) {
                     const data = await response.json()
-                    // console.log(data)
                     setPlaylist(data.playlist_data)
                     setPlaylistTracks(data.playlist_tracks)
                 }
@@ -45,7 +44,6 @@ const PlaylistPage = () => {
                 })
                 if(response.ok) {
                     const data = await response.json()
-                    // console.log(data)
                     setPlaylist(data.playlist_data)
                     setPlaylistTracks(data.playlist_tracks)
                 }
@@ -166,7 +164,7 @@ const PlaylistPage = () => {
                     <img src={playlist.images[0].url} alt={playlist.name} className='h-[270px] w-[270px] rounded-md mx-auto md:mx-0'/>
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>Playlist</div>
-                        <div className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{playlist.name}</div>
+                        <div className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{playlist.name}</div>
                         {playlist.description.length > 0 && <div className='text-wrap text-sm'>{playlist.description}</div>}
                         <div className='flex space-x-3'>
                             <Link to={`/user/${playlist.owner.id}`} className='underline md:no-underline md:hover:underline'>{playlist.owner.display_name}</Link>

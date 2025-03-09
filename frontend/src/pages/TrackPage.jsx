@@ -240,7 +240,7 @@ const TrackPage = () => {
                     <img src={track.album.images[0].url} alt={track.name} className='h-[270px] w-[270px] rounded-md mx-auto md:mx-0'/>
                     <div className="flex flex-col text-white space-y-4 md:ml-4 mt-2 md:mt-0 w-full">
                         <div>Song</div>
-                        <div className='text-4xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{track.name}</div>
+                        <div className='text-2xl md:text-7xl font-bold name-width truncate pb-2 md:pb-4'>{track.name}</div>
                         <div className='flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-5'>
                             <Link to={`/artist/${track.artists[0].id}`} className='underline md:no-underline md:hover:underline'>{track.artists[0].name}</Link>
                             <Link to={`/album/${track.album.id}`} className='underline md:no-underline md:hover:underline'>{track.album.name}</Link>
@@ -303,7 +303,8 @@ const TrackPage = () => {
                 }
 
                 {/* Preview song button */}
-                {track && <a className='bg-spotifyGreen h-fit w-fit text-center font-semibold py-2 px-3 text-xl rounded-2xl' href={track.preview_url} target='_blank'>Preview Song</a>}
+                {track && track.preview_url && <a className='bg-spotifyGreen h-fit w-fit text-center font-semibold py-2 px-3 text-xl rounded-2xl' href={track.preview_url} target='_blank'>Preview Song</a>}
+                {track && track.external_urls.spotify && <a href={`${track.external_urls.spotify}`} target='_blank' className='bg-spotifyGreen hover:bg-green-400 h-fit w-fit text-center font-semibold py-2 px-3 text-lg rounded-2xl'>Spotify Link</a>}
             </div>
             
             {/*Popular tracks section when logged in*/}
