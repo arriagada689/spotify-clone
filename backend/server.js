@@ -28,7 +28,6 @@ app.use('/api/users', userRoutes)
 app.use('/api/spotify', spotifyRoutes)
 app.use('/api/profile', profileRoutes)
 
-// ✅ Serve static files from React's build folder
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 if(process.env.NODE_ENV === 'production'){

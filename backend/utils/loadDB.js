@@ -220,8 +220,6 @@ const loadAlbums = async () => {
     }
 }
 
-
-
 export {
     loadArtists,
     loadAlbums,

@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom'
 import { Oval } from 'react-loader-spinner'
 import sortAlbumsByReleaseDate from '../utils/sortAlbums'
 import { AuthContext } from '../contexts/AuthContext.jsx';
+import SkeletonLoader from '../components/SkeletonLoader.jsx'
 
 const Home = () => {
     const [popularArtists, setPopularArtists] = useState(null)  
     const [popularAlbums, setPopularAlbums] = useState(null)  
-    const [featuredPlaylists, setFeaturedPlaylists] = useState(null)
+    // const [featuredPlaylists, setFeaturedPlaylists] = useState(null)
     const [newReleases, setNewReleases] = useState(null)
     const [miniBoxData, setMiniBoxData] = useState(null)
 
@@ -32,6 +33,7 @@ const Home = () => {
               const data = await response.json();
               setPopularArtists(data.popular_artists);
               setPopularAlbums(data.popular_albums);
+
               // setFeaturedPlaylists(data.featured_playlists);
               const sortedNewReleases = sortAlbumsByReleaseDate(data.new_releases);
               setNewReleases(sortedNewReleases);
@@ -58,7 +60,6 @@ const Home = () => {
             })
             if(response.ok) {
                 const data = await response.json()
-                // console.log(data)
                 setMiniBoxData(data)
             } else {
               const error = await response.json()
@@ -118,15 +119,9 @@ const Home = () => {
             }
             {!popularArtists && 
               <div className='flex mx-auto'>
-                <Oval
-                visible={true}
-                height="220"
-                width="180"
-                color="#4fa94d"
-                ariaLabel="oval-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                />
+                {[0,1,2,3,4,5,6,7].map(item => (
+                  <SkeletonLoader key={item} type={'artist'}/>
+                ))}
               </div>
             }
           </div>
@@ -146,50 +141,34 @@ const Home = () => {
             }
             {!popularAlbums && 
               <div className='flex mx-auto'>
-                <Oval
-                visible={true}
-                height="220"
-                width="180"
-                color="#4fa94d"
-                ariaLabel="oval-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                />
+                {[0,1,2,3,4,5,6,7].map(item => (
+                  <SkeletonLoader key={item} type={'album'}/>
+                ))}
               </div>
             }
           </div>
         </div>
 
         {/* New releases section */}
-        {newReleases && newReleases.length > 0 && 
-          <div className='w-full'>
-            <div className='flex justify-between items-baseline mb-2'>
-              <Link to='/new_releases' className='text-2xl text-white font-bold underline md:no-underline md:hover:underline'>New Releases</Link>
-              <Link to='/new_releases' className='text-grayText underline md:no-underline md:hover:underline font-semibold '>Show all</Link>
-            </div>
-
-            <div className='flex w-full overflow-x-auto md:overflow-hidden'>
-              
-              {newReleases.map((album, index) => {
-                return <AlbumCard key={index} name={album.name} artist={album.artists[0].name} image={album.images[0].url} id={album.id} type={'Album'}/>
-              })}
-              
-              {!newReleases && 
-              <div className='flex mx-auto'>
-                <Oval
-                visible={true}
-                height="220"
-                width="180"
-                color="#4fa94d"
-                ariaLabel="oval-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                />
-              </div>
-              }
-            </div>
+        <div className='w-full'>
+          <div className='flex justify-between items-baseline mb-2'>
+            <Link to='/new_releases' className='text-2xl text-white font-bold underline md:no-underline md:hover:underline'>New Releases</Link>
+            <Link to='/new_releases' className='text-grayText underline md:no-underline md:hover:underline font-semibold '>Show all</Link>
           </div>
-        }
+          <div className='flex w-full overflow-x-auto md:overflow-hidden'>
+            {newReleases && newReleases.length > 0 && newReleases.map((album, index) => {
+              return <AlbumCard key={index} name={album.name} artist={album.artists[0].name} image={album.images[0].url} id={album.id} type={'Album'}/>
+            })}
+            
+            {!newReleases && 
+              <div className='flex mx-auto'>
+                {[0,1,2,3,4,5,6,7].map(item => (
+                  <SkeletonLoader key={item} type={'playlist'}/>
+                ))}
+              </div>
+            }
+          </div>
+        </div>
 
         {/* Featured playlists section */}
         {/* {featuredPlaylists && featuredPlaylists.length > 0 && 
